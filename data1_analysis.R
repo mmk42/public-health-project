@@ -21,6 +21,40 @@ prep_compare_data <- lung_raw %>%
   filter(lung_raw$Gender != "All")
 # View(prep_compare_data)
 
+female_data <- prep_compare_data %>% 
+  filter(Gender == "Female")
+
+male_data <- prep_compare_data %>% 
+  filter(Gender == "Male")
+#Statistical Testing
+F_mean <- female_data %>% 
+  summarise(mean(Annual.Observations/Annual.Population)) 
+M_mean <- male_data %>% 
+  summarise(mean(Annual.Observations/Annual.Population))
+
+F_median <- female_data %>% 
+  summarise(median(Annual.Observations/Annual.Population))
+M_median <- male_data %>% 
+  summarise(median(Annual.Observations/Annual.Population))
+
+F_max <- female_data %>% 
+  summarise(max(Annual.Observations/Annual.Population))
+M_max <- male_data %>% 
+  summarise(max(Annual.Observations/Annual.Population))
+
+F_min <- female_data %>% 
+  summarise(min(Annual.Observations/Annual.Population))
+M_min <- male_data %>% 
+  summarise(min(Annual.Observations/Annual.Population))
+
+F_range = F_max - F_min
+M_range = M_max - M_min
+
+F_sd <- female_data %>% 
+  summarise(sd(Annual.Observations/Annual.Population))
+M_sd <- male_data %>% 
+  summarise(sd(Annual.Observations/Annual.Population))
+
 compare_plot <- prep_compare_data %>%
   ggplot(aes(x = Gender, y = Annual.Observations/Annual.Population, fill = Gender)) +
   geom_boxplot() +
