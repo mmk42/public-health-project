@@ -22,6 +22,8 @@ yearly_cancer_plot <- prep_yearly_data %>%
   labs(y = "Cancer Rate", title= "Yearly Diagnosis")
 
 yearly_cancer_plot
+
+
 #####################################################
 # Cancer Dist female and male
 #####################################################

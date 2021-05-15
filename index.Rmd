@@ -21,12 +21,14 @@ source("data1_analysis.R", local = knitr::knit_global())
 
 Below is a box plot representing the distribution fo the average cost of care for lung cancer for each year between 2010 and 2020. 
 The median cost is at \$`r format(cost_median, scientific=FALSE)` and the mean is \$`r format(cost_mean, scientific=FALSE)` with a standard deviation of \$`r format(cost_sd, scientific=FALSE)`. The minimum average cost per year is \$`r format(cost_min, scientific=FALSE)` and the maximum is \$`r format(cost_max, scientific=FALSE)`.
+
 ```{r cost_dist, echo=FALSE}
 cost_distribution
 ```
 
 
 This is the graph of total costs of lunch cancer over time. We can see that there is a clear upward trend where the total cost of lung cancer care increases yearly. 
+
 ```{r cost_analysis, echo=FALSE}
 cost_over_year
 ```
@@ -41,6 +43,7 @@ compare_plot
 ```
 
 Here we have a graph showing the relationship between the cancer rate and year. The regression line has a negative slope meaning that as the year increased, the cancer rate decreased. It is worth noting that year to year, the the cancer rate has fluctuated and the 2007 rate is very close to the 2017 rate. 
+
 ```{r yearly_cancer_rate, echo=FALSE}
 yearly_cancer_plot
 ```
