@@ -21,7 +21,7 @@ yearly_cancer_plot <- prep_yearly_data %>%
   geom_smooth(method = "lm", se = FALSE, formula = y ~ x) +
   labs(y = "Cancer Rate", title= "Yearly Diagnosis")
 
-yearly_cancer_plot
+#yearly_cancer_plot
 
 
 #####################################################
