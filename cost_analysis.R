@@ -20,6 +20,7 @@ cost_data <- cost_data %>%
 cost_mean <- cost_data %>% 
   summarise(mean(total_cost))
 
+
 cost_median <- cost_data %>% 
   summarise(median(total_cost))
 

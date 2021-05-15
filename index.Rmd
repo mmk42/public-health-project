@@ -1,0 +1,47 @@
+---
+title: "Lung Cancer Exploratory Analysis"
+author: "Midori Komi, Yilin Chen, Cici Feng"
+date: "5/14/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(knitr)
+library(ggplot2)
+library(patchwork)
+# Load data
+source("cost_analysis.R", local = knitr::knit_global())
+source("data1_analysis.R", local = knitr::knit_global())
+```
+
+## Cost Analysis
+#### In this section we will explore data on the cost of lung cancer treatment from 2010 to 2020. 
+
+Below is a box plot representing the distribution fo the average cost of care for lung cancer for each year between 2010 and 2020. 
+The median cost is at \$`r format(cost_median, scientific=FALSE)` and the mean is \$`r format(cost_mean, scientific=FALSE)` with a standard deviation of \$`r format(cost_sd, scientific=FALSE)`. The minimum average cost per year is \$`r format(cost_min, scientific=FALSE)` and the maximum is \$`r format(cost_max, scientific=FALSE)`.
+```{r cost_dist, echo=FALSE}
+cost_distribution
+```
+
+
+This is the graph of total costs of lunch cancer over time. We can see that there is a clear upward trend where the total cost of lung cancer care increases yearly. 
+```{r cost_analysis, echo=FALSE}
+cost_over_year
+```
+
+## Lung Cancer Rates
+#### In this section we will explore data on the lung cancer rates rates from 2007 to 2017.
+
+Below we have box plots of cancer rates for females and males from 2007 to 2017. We can clearly see that females tend to have a much lower lung cancer rate (median rate being `r format(F_median, scientific=FALSE)`) compared to males (median rate being `r format(M_median, scientific=FALSE)`)). The standard deviation for males is greater than females with the standard deviation for females being (median rate being `r format(F_sd, scientific=FALSE)`)) and standard deviation for males being (median rate being `r format(M_sd, scientific=FALSE)`)).
+
+```{r gender_cancer_rate, echo=FALSE}
+compare_plot
+```
+
+Here we have a graph showing the relationship between the cancer rate and year. The regression line has a negative slope meaning that as the year increased, the cancer rate decreased. It is worth noting that year to year, the the cancer rate has fluctuated and the 2007 rate is very close to the 2017 rate. 
+```{r yearly_cancer_rate, echo=FALSE}
+yearly_cancer_plot
+```
+

@@ -9,13 +9,22 @@ prep_yearly_data <- lung_raw %>%
   filter(lung_raw$Gender == "All")
 # View(prep_yearly_data)
 
+#####################################################
+# Cancer Rate vs Year
+#####################################################
+
 yearly_cancer_plot <- prep_yearly_data %>%
   ggplot(mapping = aes(x = Year, y = Annual.Observations/Annual.Population)) +
   geom_point() +
   scale_x_continuous(breaks = 2007:2017) +
   geom_line() +
-  geom_smooth(method = "lm", se = TRUE) +
+  geom_smooth(method = "lm", se = FALSE, formula = y ~ x) +
   labs(y = "Cancer Rate", title= "Yearly Diagnosis")
+
+yearly_cancer_plot
+#####################################################
+# Cancer Dist female and male
+#####################################################
 
 prep_compare_data <- lung_raw %>%
   filter(lung_raw$Gender != "All")
