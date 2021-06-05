@@ -12,7 +12,7 @@ library(plotly)
 cost_type_chooser <- selectInput(
   "cost_input",
   label = "Cost Type",
-  choices  = list("Total Cost" = "Total.Cost","Initial Year After Diagnosis Cost" = 0.05, "Male" = 0.3),
+  choices  = list("Total Cost" = "Total.Cost","Initial Year After Diagnosis Cost" = "Initial.Year.After.Diagnosis.Cost", "Continuing Phase Cost" = "Continuing.Phase.Cost"),
   selected = "Total Cost"
 )
 
@@ -40,7 +40,6 @@ page_1 <- tabPanel(
     mainPanel(    
       plotOutput(outputId = "cost_yearly"),
       plotOutput(outputId = "cost_dist")
-      # plotOutput(outputId = "dcm")
     )))
 page_2 <- tabPanel(
   "Cancer Rates",                   
