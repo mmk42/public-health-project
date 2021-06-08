@@ -47,8 +47,11 @@ page_1 <- tabPanel(
   "Cancer Cost",                   
   sidebarLayout(             
     sidebarPanel( 
-      cost_type_chooser
-    ),           
+      cost_type_chooser,
+      h4("The cost in the plot is also reflecting the inflation, to get an idea of the cost 
+         change without inflation, click this ", a("inflation calculator", href ="https://www.usinflationcalculator.com/"))
+    ),     
+    
     mainPanel(    
       plotOutput(outputId = "cost_yearly"),
       plotOutput(outputId = "cost_dist")
@@ -114,12 +117,13 @@ page_4 <- tabPanel(
   "Conclusion",                   
     mainPanel(  
       h2("What is the yearly change and distribution of the cost of lung cancer?"),
-      h4("Based on our observations of the interactive plot of the cost we can see
-         that the average total cost from 2010 to 2020’s median is around $12624,
-         the maximum is around $18842, and the minimum is around $11349, and these are
-         only the cost for one year, which show that the healing process of cancer is
-         expensive. However, despite the inflation, the real cost of healing cancer 
-         is actually decreasing as time year gets recent. "),
+      h4("Based on our observations of the interactive plot of the cost we can see 
+         that the average total cost from 2010 to 2020’s median is around $12624, 
+         the maximum is around $18842 and the minimum is around $11349, and these 
+         are only the cost for one year, which show that the healing process of cancer 
+         is expensive. From the line plot and the inflation calculator we can tell that, even the price in the plot 
+         is affected by the inflation, as year gets more recent the cost still increases
+         as well (not as much as shown in the graph)."),
       #May be talk about the difference between three different costs 
       h2("What did we learn from analyzing the lung cancer rate?"),
       h4("Based on our observations of the interactive plot of the cancer rate we 
