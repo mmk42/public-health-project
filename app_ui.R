@@ -53,13 +53,13 @@ page_1 <- tabPanel(
     sidebarPanel( 
       #cost_type_chooser,
       radioButtons("cost_input", label = strong("Cost Type"), 
-                   choices  = list("Total Cost" = "Total.Cost","Initial Year After
-                                             Diagnosis Cost" = "Initial.Year.After.Diagnosis.Cost", 
-                                             "Continuing Phase Cost" = "Continuing.Phase.Cost"),
+                   choices  = list("Total Cost" = 'Total.Cost',"Initial Year After
+                                             Diagnosis Cost" = 'Initial.Year.After.Diagnosis.Cost', 
+                                             "Continuing Phase Cost" = 'Continuing.Phase.Cost'),
                    selected = 'Total.Cost'),
-      radioButtons("plot_type", label = strong("Statistic Analysis"), 
-                   choices = list("Line Chart" = 0, "Box Plot" = 1),
-                   selected = 0),
+      # radioButtons("plot_type", label = strong("Statistic Analysis"), 
+      #              choices = list("Line Chart" = 0, "Box Plot" = 1),
+      #              selected = 0),
       p("The cost in the plot is also reflecting the inflation, to get an idea of the cost 
          change without inflation, click this ", a("inflation calculator", href ="https://www.usinflationcalculator.com/"))
     ),     

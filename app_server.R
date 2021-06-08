@@ -58,21 +58,56 @@ server <- function(input, output, session) {
   })
   
   #cost over time plot
-  cost_data_relation <- cost_data %>% 
-    group_by(year) %>% 
-    summarise(mean(Total.Costs)) %>% 
-    rename(
-      "Total.Costs" = "mean(Total.Costs)"
-    )
-  cost_over_year <- ggplot(cost_data_relation, aes_string(x = "year", y = "Total.Costs", group=1)) +
-    geom_line(linetype = "dashed", color="red")+
-    geom_point() +
-    labs(
-      title = "Total Costs Change On Lung Cancer Over Time",
-      x = "Year",
-      y = "Total Costs($)"
-    )
-  
+  reactive ({
+    if(input$cost_input == 'Total.Costs') {
+      cost_data_relation <- cost_data %>% 
+        group_by(year) %>% 
+        summarise(mean(Total.Costs)) %>% 
+        rename(
+          "Total.Costs" = "mean(Total.Costs)"
+        )
+      cost_over_year <- ggplot(cost_data_relation, aes_string(x = "year", y = "Total.Costs", group=1)) +
+        geom_line(linetype = "dashed", color="red")+
+        geom_point() +
+        labs(
+          title = "Total Costs Change On Lung Cancer Over Time",
+          x = "Year",
+          y = "Total Costs($)"
+        )
+    } else if (input$cost_input == 'Initial.Year.After.Diagnosis.Cost') {
+      cost_data_relation <- cost_data %>% 
+        group_by(year) %>% 
+        summarise(mean(Initial.Year.After.Diagnosis.Cost)) %>% 
+        rename(
+          "Initial.Year.After.Diagnosis.Cost" = "mean(Initial.Year.After.Diagnosis.Cost)"
+        )
+      cost_over_year <- ggplot(cost_data_relation, aes_string(x = "year", y = "Initial.Year.After.Diagnosis.Cost", group=1)) +
+        geom_line(linetype = "dashed", color="red")+
+        geom_point() +
+        labs(
+          title = "Initial Year After Diagnosis Cost Change On Lung Cancer Over Time",
+          x = "Year",
+          y = "Initial Year After Diagnosis Costs($)"
+        )  
+    } else {
+      cost_data_relation <- cost_data %>% 
+        group_by(year) %>% 
+        summarise(mean(Continuing.Phase.Cost)) %>% 
+        rename(
+          "Continuing.Phase.Cost" = "mean(Continuing.Phase.Cost)"
+        )
+      cost_over_year <- ggplot(cost_data_relation, aes_string(x = "year", y = "Continuing.Phase.Cost", group=1)) +
+        geom_line(linetype = "dashed", color="red")+
+        geom_point() +
+        labs(
+          title = "Continuing Phase Cost Change On Lung Cancer Over Time",
+          x = "Year",
+          y = "Continuing Phase Cost($)"
+        )       
+    }
+  })
+
+
   output$cost_yearly <- renderPlot({
     plot(cost_over_year)
   }) 
