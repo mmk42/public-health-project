@@ -10,12 +10,12 @@ library(shinythemes)
 
 # --------- CREATE WIDGETS ---------- 
 
-cost_type_chooser <- selectInput(
-  "cost_input",
-  label = "Cost Type",
-  choices  = list("Total Cost" = "Total.Cost","Initial Year After Diagnosis Cost" = "Initial.Year.After.Diagnosis.Cost", "Continuing Phase Cost" = "Continuing.Phase.Cost"),
-  selected = "Total Cost"
-)
+#cost_type_chooser <- selectInput(
+  #"cost_input",
+  #label = "Cost Type",
+  #choices  = list("Total Cost" = "Total.Cost","Initial Year After Diagnosis Cost" = "Initial.Year.After.Diagnosis.Cost", "Continuing Phase Cost" = "Continuing.Phase.Cost"),
+  #selected = "Total Cost"
+#)
 
 
 
@@ -44,11 +44,23 @@ page_0 <- tabPanel(
       h4("Prevention Information from: ", a("cancer.org",href = "https://www.cancer.org/cancer/lung-cancer/causes-risks-prevention/prevention.html"))
     ))
 page_1 <- tabPanel(
-  "Cancer Cost",                   
+  "Cancer Cost", 
+  h2("How does cost changes overtime?"),
+  p("In this section we will explore data collected on the cost to heal lung cancer from 2010 to 2020. 
+         Check out the visualization for different types of cost with different ways of statistic analysis!"),
+  br(),
   sidebarLayout(             
     sidebarPanel( 
-      cost_type_chooser,
-      h4("The cost in the plot is also reflecting the inflation, to get an idea of the cost 
+      #cost_type_chooser,
+      radioButtons("cost_input", label = strong("Cost Type"), 
+                   choices  = list("Total Cost" = "Total.Cost","Initial Year After
+                                             Diagnosis Cost" = "Initial.Year.After.Diagnosis.Cost", 
+                                             "Continuing Phase Cost" = "Continuing.Phase.Cost"),
+                   selected = 'Total.Cost'),
+      radioButtons("plot_type", label = strong("Statistic Analysis"), 
+                   choices = list("Line Chart" = 0, "Box Plot" = 1),
+                   selected = 0),
+      p("The cost in the plot is also reflecting the inflation, to get an idea of the cost 
          change without inflation, click this ", a("inflation calculator", href ="https://www.usinflationcalculator.com/"))
     ),     
     
