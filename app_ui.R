@@ -65,7 +65,7 @@ page_1 <- tabPanel(
     ),     
     
     mainPanel(    
-      plotOutput(outputId = "cost_yearly"),
+      plotlyOutput(outputId = "cost_yearly"),
       plotOutput(outputId = "cost_dist")
     )))
 

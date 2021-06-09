@@ -56,17 +56,17 @@ server <- function(input, output, session) {
   output$cost_dist <- renderPlot({
     plot(cost_distribution)
   })
-  
-  #cost over time plot
-  reactive ({
-    if(input$cost_input == 'Total.Costs') {
+
+
+  output$cost_yearly <- renderPlotly({
+    if(input$cost_input == 'Total.Cost') {
       cost_data_relation <- cost_data %>% 
         group_by(year) %>% 
         summarise(mean(Total.Costs)) %>% 
         rename(
           "Total.Costs" = "mean(Total.Costs)"
         )
-      cost_over_year <- ggplot(cost_data_relation, aes_string(x = "year", y = "Total.Costs", group=1)) +
+      ggplot(cost_data_relation, aes_string(x = "year", y = "Total.Costs", group=1)) +
         geom_line(linetype = "dashed", color="red")+
         geom_point() +
         labs(
@@ -81,7 +81,7 @@ server <- function(input, output, session) {
         rename(
           "Initial.Year.After.Diagnosis.Cost" = "mean(Initial.Year.After.Diagnosis.Cost)"
         )
-      cost_over_year <- ggplot(cost_data_relation, aes_string(x = "year", y = "Initial.Year.After.Diagnosis.Cost", group=1)) +
+      ggplot(cost_data_relation, aes_string(x = "year", y = "Initial.Year.After.Diagnosis.Cost", group=1)) +
         geom_line(linetype = "dashed", color="red")+
         geom_point() +
         labs(
@@ -89,14 +89,14 @@ server <- function(input, output, session) {
           x = "Year",
           y = "Initial Year After Diagnosis Costs($)"
         )  
-    } else {
+    } else if (input$cost_input == 'Continuing.Phase.Cost') {
       cost_data_relation <- cost_data %>% 
         group_by(year) %>% 
         summarise(mean(Continuing.Phase.Cost)) %>% 
         rename(
           "Continuing.Phase.Cost" = "mean(Continuing.Phase.Cost)"
         )
-      cost_over_year <- ggplot(cost_data_relation, aes_string(x = "year", y = "Continuing.Phase.Cost", group=1)) +
+      ggplot(cost_data_relation, aes_string(x = "year", y = "Continuing.Phase.Cost", group=1)) +
         geom_line(linetype = "dashed", color="red")+
         geom_point() +
         labs(
@@ -105,11 +105,6 @@ server <- function(input, output, session) {
           y = "Continuing Phase Cost($)"
         )       
     }
-  })
-
-
-  output$cost_yearly <- renderPlot({
-    plot(cost_over_year)
   }) 
   
   # ------- CANCER RATE PAGE --------- 
