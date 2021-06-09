@@ -150,7 +150,11 @@ page_4 <- tabPanel(
          However, there is an overall trend of decreasing, which tells us that as the year 
          gets recent the risk of getting lung cancer decreases, and according to the American 
          Cancer Society, one of the reasons for that is more and more people realized the danger 
-         of tobacco and quite smoking. And distribution wise, despite the smoker generally has 
+         of tobacco and quite smoking. From the line plot we can also see that while male’s cancer 
+         rate decreases, female’s cancer rate is increasing among years. According to the American
+         Cancer Society’s ", a("study", href= "https://www.cancer.org/latest-news/study-young-women-now-have-higher-rate-for-lung-cancer-than-men-worldwide.html"),
+         ", a large cause of it is the increases in adenocarcinoma, a type of lung cancer seen in smokers, in women.
+         This type of lung cancer is likely to occur in young women and is the most common type in nonsmokers. Distribution wise, despite the smoker generally has 
          a larger risk of getting the lung cancer, we can see from the box plot on the cancer rate 
          that male has a higher chance of getting the lung cancer.")
     ))
