@@ -61,7 +61,8 @@ page_1 <- tabPanel(
       #              choices = list("Line Chart" = 0, "Box Plot" = 1),
       #              selected = 0),
       p("The cost in the plot is also reflecting the inflation, to get an idea of the cost 
-         change without inflation, click this ", a("inflation calculator", href ="https://www.usinflationcalculator.com/"))
+         change without inflation, click this ", a("inflation calculator", href ="https://www.usinflationcalculator.com/"), 
+        " and enter the values you get from hovering over each of the data points to the right.")
     ),     
     
     mainPanel(    
@@ -70,7 +71,7 @@ page_1 <- tabPanel(
     )))
 
 cancerRate_page <- tabPanel(
-  title = "Cancer Rate",             #title of the page, what will appear as the tab name
+  title = "Cancer Rate",             
   h2("How does lung cancer rate changes overtime?"),
   p("In this section we will explore data on the lung cancer rates rates from 2007 to 2017. 
          Check out the lung cancer rate for different genders and year range with different ways of statistic analysis!"),
