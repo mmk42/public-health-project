@@ -71,7 +71,7 @@ page_1 <- tabPanel(
       p("For all cost types se can see that the change in cost is very linear. We can also see that the cost
         has been consistently increasing from 2010 to 2020 for all cost types. In the future it may be worth 
         eploring why the increase in cost is so linear. We can also see from the box 
-        plot that teh average total cost is around $12750 and that althoiugh there are a few very high outliers,
+        plot that the average total cost is around $12750 and that althoiugh there are a few very high outliers,
         the distributions is skewed left.")
     )))
 
