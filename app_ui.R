@@ -62,17 +62,20 @@ page_1 <- tabPanel(
       #              selected = 0),
       p("The cost in the plot is also reflecting the inflation, to get an idea of the cost 
          change without inflation, click this ", a("inflation calculator", href ="https://www.usinflationcalculator.com/"), 
-        " and enter the values you get from hovering over each of the data points to the right.")
+        " and enter the values you get from hovering over each of the data points to the right."),
+      br(),
+      p("For all cost types we can see that the change in cost is very linear. We can also see that the cost
+        has been consistently increasing from 2010 to 2020 for all cost types. The plot also reflects the inflation,
+        so the real cost is increasing by a smaller amount each year and look less linear as the plot." ),
+      p("Below is a box plot representing the distribution for the average cost of care for lung cancer for each 
+      year between 2010 and 2020. The median cost is at $12624.75 and the mean is $13113.97 with a standard deviation 
+      of $1586.575. The minimum average cost per year is $11349.5 and the maximum is $18842.6. Although there are a few very high outliers,
+        the distributions is skewed to the left.")
     ),     
     
     mainPanel(    
       plotlyOutput(outputId = "cost_yearly"),
       plotOutput(outputId = "cost_dist"),
-      p("For all cost types se can see that the change in cost is very linear. We can also see that the cost
-        has been consistently increasing from 2010 to 2020 for all cost types. In the future it may be worth 
-        eploring why the increase in cost is so linear. We can also see from the box 
-        plot that the average total cost is around $12750 and that althoiugh there are a few very high outliers,
-        the distributions is skewed left.")
     )))
 
 cancerRate_page <- tabPanel(
